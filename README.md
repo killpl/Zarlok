@@ -1,4 +1,3 @@
-Projekt ŻARŁOK
 
 	Projekt ŻARŁOK ma za zadanie stworzenie systemu ułatwiającego odchudzanie 
 	i kontrolę nad ilością spożywanych kalorii za pomocą łatwej w obsłudze aplikacji na telefon 
@@ -15,20 +14,20 @@ Projekt ŻARŁOK
  - Administracja - dodawanie kategorii posiłków i samych rodzajów posiłków, usuwanie, edycja.
 
 2. Aplikacja na telefon - na Androida
-- Logowanie/wylogowanie w systemie, edycja konta użytkownika.
-- Połączenie z serwerem - pobranie kategorii i nazw posiłków.
-- Wybór tego co się aktualnie zjada.
-- Historia kilku ostatnich posiłków z aktualnego dnia.
-- Informacje o otrzymanych tego dnia osiągnięciach.
+ - Logowanie/wylogowanie w systemie, edycja konta użytkownika.
+ - Połączenie z serwerem - pobranie kategorii i nazw posiłków.
+ - Wybór tego co się aktualnie zjada.
+ - Historia kilku ostatnich posiłków z aktualnego dnia.
+ - Informacje o otrzymanych tego dnia osiągnięciach.
 
 3. Serwer i baza danych
-- Baza danych w PostgreSQL.
-- Procedury ułatwiające obsługę w PL/pgSQL - złożone zapytania, agregacja, tworzenie danych statystycznych (do wykresów).
-- Triggery dla dodawania osiągnięć.
-- Serwer komunikacyjny udostępniający obsługę bazy danych dla aplikacji na telefonie - API.
+ - Baza danych w PostgreSQL.
+ - Procedury ułatwiające obsługę w PL/pgSQL - złożone zapytania, agregacja, tworzenie danych statystycznych (do wykresów).
+ - Triggery dla dodawania osiągnięć.
+ - Serwer komunikacyjny udostępniający obsługę bazy danych dla aplikacji na telefonie - API.
 
 
 Informacje techniczne:
-Strona internetowa - Microsoft MVC 4, Entity Framework, HTML5, CSS3.
-Telefon - Android 4.1-4.2 Jelly Bean.
-Serwer - PostgreSQL, serwer proxy do komunikacji z aplikacją na telefonie.
+ - Strona internetowa - Microsoft MVC 4, Entity Framework, HTML5, CSS3.
+ - Telefon - Android 4.1-4.2 Jelly Bean.
+ - Serwer - PostgreSQL, serwer proxy do komunikacji z aplikacją na telefonie.
