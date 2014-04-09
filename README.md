@@ -1,18 +1,18 @@
 Projekt ŻARŁOK
 
 	Projekt ŻARŁOK ma za zadanie stworzenie systemu ułatwiającego odchudzanie 
-i kontrolę nad ilością spożywanych kalorii za pomocą łatwej w obsłudze aplikacji na telefon 
-z systemem Android, strony internetowej pozwalającej na podgląd historii swoich wpisów 
-i porównywanie ze znajomymi, a także motywującego użytkowników systemu osiągnięć.
+	i kontrolę nad ilością spożywanych kalorii za pomocą łatwej w obsłudze aplikacji na telefon 
+	z systemem Android, strony internetowej pozwalającej na podgląd historii swoich wpisów 
+	i porównywanie ze znajomymi, a także motywującego użytkowników systemu osiągnięć.
 
 1. Strona internetowa
-- Konta użytkowników - logowanie, rejestracja, edycja konta użytkownika.
-- Lista znajomych: dodawanie i usuwanie użytkowników do znajomych, wyszukiwanie.
-- Profile znajomych - podgląd ich osiągnięć.
-- Profil zalogowanego użytkownika - podgląd własnych osiągnięć, wszystkich osiągnięć, historia jedzenia, wykresy kalorii.
-- Ranking ludzi z największą liczbą osiągnięć.
-- Kalendarz z listą rzeczy zjedzonych w ostatnim miesiącu.
-- Administracja - dodawanie kategorii posiłków i samych rodzajów posiłków, usuwanie, edycja.
+ - Konta użytkowników - logowanie, rejestracja, edycja konta użytkownika.
+ - Lista znajomych: dodawanie i usuwanie użytkowników do znajomych, wyszukiwanie.
+ - Profile znajomych - podgląd ich osiągnięć.
+ - Profil zalogowanego użytkownika - podgląd własnych osiągnięć, wszystkich osiągnięć, historia jedzenia, wykresy kalorii.
+ - Ranking ludzi z największą liczbą osiągnięć.
+ - Kalendarz z listą rzeczy zjedzonych w ostatnim miesiącu.
+ - Administracja - dodawanie kategorii posiłków i samych rodzajów posiłków, usuwanie, edycja.
 
 2. Aplikacja na telefon - na Androida
 - Logowanie/wylogowanie w systemie, edycja konta użytkownika.
