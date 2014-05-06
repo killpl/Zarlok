@@ -1,0 +1,419 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Edmx Version="3.0" xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <Runtime>
+    <StorageModels>
+      <Schema Namespace="public" Alias="Self" Provider="Npgsql" ProviderManifestToken="8.3.22" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="ZarlokStoreContainer">
+          <EntitySet Name="profile" EntityType="public.profile" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="category" EntityType="public.category" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="food" EntityType="public.food" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="eaten" EntityType="public.eaten" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="achievement" EntityType="public.achievement" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="profileachievement" EntityType="public.profileachievement" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="friendship" EntityType="public.friendship" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <EntitySet Name="request" EntityType="public.request" p6:Type="Tables" Schema="public" xmlns:p6="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" />
+          <AssociationSet Name="food_categoryid_fkey" Association="public.food_categoryid_fkey">
+            <End Role="category" EntitySet="category" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="eaten_foodid_fkey" Association="public.eaten_foodid_fkey">
+            <End Role="food" EntitySet="food" />
+            <End Role="eaten" EntitySet="eaten" />
+          </AssociationSet>
+          <AssociationSet Name="eaten_profileid_fkey" Association="public.eaten_profileid_fkey">
+            <End Role="profile" EntitySet="profile" />
+            <End Role="eaten" EntitySet="eaten" />
+          </AssociationSet>
+          <AssociationSet Name="profileachievement_profileid_fkey" Association="public.profileachievement_profileid_fkey">
+            <End Role="profile" EntitySet="profile" />
+            <End Role="profileachievement" EntitySet="profileachievement" />
+          </AssociationSet>
+          <AssociationSet Name="friendship_sender_fkey" Association="public.friendship_sender_fkey">
+            <End Role="profile" EntitySet="profile" />
+            <End Role="friendship" EntitySet="friendship" />
+          </AssociationSet>
+          <AssociationSet Name="friendship_receiver_fkey" Association="public.friendship_receiver_fkey">
+            <End Role="profile" EntitySet="profile" />
+            <End Role="friendship" EntitySet="friendship" />
+          </AssociationSet>
+          <AssociationSet Name="request_sender_fkey" Association="public.request_sender_fkey">
+            <End Role="profile" EntitySet="profile" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+          <AssociationSet Name="request_receiver_fkey" Association="public.request_receiver_fkey">
+            <End Role="profile" EntitySet="profile" />
+            <End Role="request" EntitySet="request" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="profile">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="login" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="login" Type="varchar" Nullable="false" MaxLength="20" />
+          <Property Name="password" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="firstname" Type="varchar" MaxLength="100" />
+          <Property Name="surname" Type="varchar" MaxLength="100" />
+          <Property Name="type" Type="bool" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="food">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+          <Property Name="calories" Type="int4" />
+          <Property Name="categoryid" Type="int8" />
+        </EntityType>
+        <EntityType Name="eaten">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="foodid" Type="int8" />
+          <Property Name="profileid" Type="int8" />
+          <Property Name="date" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="achievement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="name" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="profileachievement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="profileid" Type="int8" />
+          <Property Name="date" Type="timestamp" />
+        </EntityType>
+        <EntityType Name="friendship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="sender" Type="int8" />
+          <Property Name="receiver" Type="int8" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int8" Nullable="false" StoreGeneratedPattern="Identity" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="sender" Type="int8" />
+          <Property Name="receiver" Type="int8" />
+          <Property Name="sent" Type="timestamp" />
+        </EntityType>
+        <Association Name="food_categoryid_fkey">
+          <End Role="category" Type="public.category" Multiplicity="0..1" />
+          <End Role="food" Type="public.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="eaten_foodid_fkey">
+          <End Role="food" Type="public.food" Multiplicity="0..1" />
+          <End Role="eaten" Type="public.eaten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="food">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eaten">
+              <PropertyRef Name="foodid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="eaten_profileid_fkey">
+          <End Role="profile" Type="public.profile" Multiplicity="0..1" />
+          <End Role="eaten" Type="public.eaten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eaten">
+              <PropertyRef Name="profileid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="profileachievement_profileid_fkey">
+          <End Role="profile" Type="public.profile" Multiplicity="0..1" />
+          <End Role="profileachievement" Type="public.profileachievement" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="profileachievement">
+              <PropertyRef Name="profileid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="friendship_sender_fkey">
+          <End Role="profile" Type="public.profile" Multiplicity="0..1" />
+          <End Role="friendship" Type="public.friendship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="friendship">
+              <PropertyRef Name="sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="friendship_receiver_fkey">
+          <End Role="profile" Type="public.profile" Multiplicity="0..1" />
+          <End Role="friendship" Type="public.friendship" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="friendship">
+              <PropertyRef Name="receiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="request_sender_fkey">
+          <End Role="profile" Type="public.profile" Multiplicity="0..1" />
+          <End Role="request" Type="public.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="sender" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="request_receiver_fkey">
+          <End Role="profile" Type="public.profile" Multiplicity="0..1" />
+          <End Role="request" Type="public.request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="profile">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="request">
+              <PropertyRef Name="receiver" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </StorageModels>
+    <ConceptualModels>
+      <Schema Namespace="Zarlok" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="ZarlokEntities">
+          <EntitySet Name="profile" EntityType="Zarlok.profile" />
+          <EntitySet Name="category" EntityType="Zarlok.category" />
+          <EntitySet Name="food" EntityType="Zarlok.food" />
+          <EntitySet Name="eaten" EntityType="Zarlok.eaten" />
+          <EntitySet Name="achievement" EntityType="Zarlok.achievement" />
+          <EntitySet Name="profileachievement" EntityType="Zarlok.profileachievement" />
+          <EntitySet Name="friendship" EntityType="Zarlok.friendship" />
+          <EntitySet Name="request" EntityType="Zarlok.request" />
+          <AssociationSet Name="food_categoryid_fkey" Association="Zarlok.food_categoryid_fkey">
+            <End Role="category" EntitySet="category" />
+            <End Role="food" EntitySet="food" />
+          </AssociationSet>
+          <AssociationSet Name="eaten_foodid_fkey" Association="Zarlok.eaten_foodid_fkey">
+            <End Role="food" EntitySet="food" />
+            <End Role="eaten" EntitySet="eaten" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="profile">
+          <Key>
+            <PropertyRef Name="id" />
+            <PropertyRef Name="login" />
+            <PropertyRef Name="password" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="login" Type="String" Nullable="false" MaxLength="20" />
+          <Property Name="password" Type="String" Nullable="false" MaxLength="50" />
+          <Property Name="firstname" Type="String" MaxLength="100" />
+          <Property Name="surname" Type="String" MaxLength="100" />
+          <Property Name="type" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="category">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="name" Type="String" MaxLength="100" />
+          <NavigationProperty Name="food" Relationship="Zarlok.food_categoryid_fkey" FromRole="category" ToRole="food" />
+        </EntityType>
+        <EntityType Name="food">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="name" Type="String" MaxLength="100" />
+          <Property Name="calories" Type="Int32" />
+          <Property Name="categoryid" Type="Int64" />
+          <NavigationProperty Name="category" Relationship="Zarlok.food_categoryid_fkey" FromRole="food" ToRole="category" />
+          <NavigationProperty Name="eaten" Relationship="Zarlok.eaten_foodid_fkey" FromRole="food" ToRole="eaten" />
+        </EntityType>
+        <EntityType Name="eaten">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="foodid" Type="Int64" />
+          <Property Name="profileid" Type="Int64" />
+          <Property Name="date" Type="DateTime" />
+          <NavigationProperty Name="food" Relationship="Zarlok.eaten_foodid_fkey" FromRole="eaten" ToRole="food" />
+        </EntityType>
+        <EntityType Name="achievement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="name" Type="String" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="profileachievement">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="profileid" Type="Int64" />
+          <Property Name="date" Type="DateTime" />
+        </EntityType>
+        <EntityType Name="friendship">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="sender" Type="Int64" />
+          <Property Name="receiver" Type="Int64" />
+        </EntityType>
+        <EntityType Name="request">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int64" Nullable="false" p6:StoreGeneratedPattern="Identity" xmlns:p6="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
+          <Property Name="sender" Type="Int64" />
+          <Property Name="receiver" Type="Int64" />
+          <Property Name="sent" Type="DateTime" />
+        </EntityType>
+        <Association Name="food_categoryid_fkey">
+          <End Role="category" Type="Zarlok.category" Multiplicity="0..1" />
+          <End Role="food" Type="Zarlok.food" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="category">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="food">
+              <PropertyRef Name="categoryid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="eaten_foodid_fkey">
+          <End Role="food" Type="Zarlok.food" Multiplicity="0..1" />
+          <End Role="eaten" Type="Zarlok.eaten" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="food">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="eaten">
+              <PropertyRef Name="foodid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </ConceptualModels>
+    <Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ZarlokStoreContainer" CdmEntityContainer="ZarlokEntities">
+          <EntitySetMapping Name="profile">
+            <EntityTypeMapping TypeName="Zarlok.profile">
+              <MappingFragment StoreEntitySet="profile">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="firstname" ColumnName="firstname" />
+                <ScalarProperty Name="surname" ColumnName="surname" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="category">
+            <EntityTypeMapping TypeName="Zarlok.category">
+              <MappingFragment StoreEntitySet="category">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="food">
+            <EntityTypeMapping TypeName="Zarlok.food">
+              <MappingFragment StoreEntitySet="food">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="calories" ColumnName="calories" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eaten">
+            <EntityTypeMapping TypeName="Zarlok.eaten">
+              <MappingFragment StoreEntitySet="eaten">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="foodid" ColumnName="foodid" />
+                <ScalarProperty Name="profileid" ColumnName="profileid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="achievement">
+            <EntityTypeMapping TypeName="Zarlok.achievement">
+              <MappingFragment StoreEntitySet="achievement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="profileachievement">
+            <EntityTypeMapping TypeName="Zarlok.profileachievement">
+              <MappingFragment StoreEntitySet="profileachievement">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="profileid" ColumnName="profileid" />
+                <ScalarProperty Name="date" ColumnName="date" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="friendship">
+            <EntityTypeMapping TypeName="Zarlok.friendship">
+              <MappingFragment StoreEntitySet="friendship">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="request">
+            <EntityTypeMapping TypeName="Zarlok.request">
+              <MappingFragment StoreEntitySet="request">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="sender" ColumnName="sender" />
+                <ScalarProperty Name="receiver" ColumnName="receiver" />
+                <ScalarProperty Name="sent" ColumnName="sent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </Mappings>
+  </Runtime>
+</Edmx>

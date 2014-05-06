@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ZarlokStoreContainer" CdmEntityContainer="ZarlokEntities">
+    <EntitySetMapping Name="profile">
+      <EntityTypeMapping TypeName="Zarlok.profile">
+        <MappingFragment StoreEntitySet="profile">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="firstname" ColumnName="firstname" />
+          <ScalarProperty Name="surname" ColumnName="surname" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="category">
+      <EntityTypeMapping TypeName="Zarlok.category">
+        <MappingFragment StoreEntitySet="category">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="food">
+      <EntityTypeMapping TypeName="Zarlok.food">
+        <MappingFragment StoreEntitySet="food">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="calories" ColumnName="calories" />
+          <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="eaten">
+      <EntityTypeMapping TypeName="Zarlok.eaten">
+        <MappingFragment StoreEntitySet="eaten">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="foodid" ColumnName="foodid" />
+          <ScalarProperty Name="profileid" ColumnName="profileid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="achievement">
+      <EntityTypeMapping TypeName="Zarlok.achievement">
+        <MappingFragment StoreEntitySet="achievement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="profileachievement">
+      <EntityTypeMapping TypeName="Zarlok.profileachievement">
+        <MappingFragment StoreEntitySet="profileachievement">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="profileid" ColumnName="profileid" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="friendship">
+      <EntityTypeMapping TypeName="Zarlok.friendship">
+        <MappingFragment StoreEntitySet="friendship">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="receiver" ColumnName="receiver" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="request">
+      <EntityTypeMapping TypeName="Zarlok.request">
+        <MappingFragment StoreEntitySet="request">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="sender" ColumnName="sender" />
+          <ScalarProperty Name="receiver" ColumnName="receiver" />
+          <ScalarProperty Name="sent" ColumnName="sent" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
