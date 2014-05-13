@@ -3,6 +3,7 @@ package pl.vetinari.zarlok;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Map.Entry;
 
 /**
  * Created by Adam on 2014-05-11.
@@ -50,5 +51,31 @@ public final class Database {
 
     public Boolean login(String login, String password){
         return api.login(login, password);
+    }
+
+    public ArrayList<String> getFoodByCategory(String category){
+        int id = -1;
+        for(Entry<Integer, String> entry : categories.entrySet()){
+            if(entry.getValue().equals(category))
+                id = entry.getKey();
+        }
+
+        ArrayList<String> foodArray = new ArrayList<String>();
+        for(Food f : food) {
+            if (f.categoryId == id)
+                foodArray.add(f.name);
+        }
+
+        return foodArray;
+    }
+
+    public Boolean save(String category, String foodName){
+
+        for(Food f : food) {
+            if (f.name.equals(foodName )&& categories.get(f.categoryId).equals(category))
+                return api.save(f.id);
+        }
+
+        return false;
     }
 }

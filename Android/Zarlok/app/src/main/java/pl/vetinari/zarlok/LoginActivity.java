@@ -4,7 +4,9 @@ import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -60,7 +62,12 @@ public class LoginActivity extends Activity {
 		mEmailView = (EditText) findViewById(R.id.email);
 		mEmailView.setText(mEmail);
 
-		mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView = (EditText) findViewById(R.id.password);
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        mEmailView.setText(sharedPref.getString("email", ""));
+        if(!sharedPref.getString("email", "").equals("")) mPasswordView.requestFocus();
+
 		mPasswordView
 				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 					@Override
@@ -90,7 +97,7 @@ public class LoginActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.login, menu);
+		//getMenuInflater().inflate(R.menu.login, menu);
 		return true;
 	}
 
@@ -132,6 +139,11 @@ public class LoginActivity extends Activity {
 			focusView = mEmailView;
 			cancel = true;
 		}
+
+        SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("email", mEmail);
+        editor.commit();
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
@@ -203,8 +215,8 @@ public class LoginActivity extends Activity {
 
             view = (LoginActivity)params[2];
             // Simulate network access.
-            ServerAPI api = new ServerAPI("http://192.168.1.102:8000");
-            Database.instance().setServer("http://192.168.1.102:8000");
+            ServerAPI api = new ServerAPI("http://192.168.1.101:8000");
+            Database.instance().setServer("http://192.168.1.101:8000");
             if(Database.instance().login((String)params[0], (String)params[1])) {
                 return true;
             }

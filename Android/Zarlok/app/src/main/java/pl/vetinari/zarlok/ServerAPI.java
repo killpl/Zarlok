@@ -83,4 +83,13 @@ public class ServerAPI {
         return categories;
     }
 
+    public boolean save(Integer foodId){
+        String resp = connection.request("/eat/"+APIKey+"/"+foodId.toString()+"/");
+
+        if(resp.contentEquals("Error"))
+            return false;
+
+        return true;
+    }
+
 }

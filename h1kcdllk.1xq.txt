@@ -1,0 +1,91 @@
+﻿asdf
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch master
+# Changes to be committed:
+#   (use "git reset HEAD <file>..." to unstage)
+#
+#	new file:   4204mzhd.iqq.txt
+#	deleted:    Android/Zarlok/.classpath
+#	new file:   Android/Zarlok/.gitignore
+#	new file:   Android/Zarlok/.idea/.name
+#	new file:   Android/Zarlok/.idea/codeStyleSettings.xml
+#	new file:   Android/Zarlok/.idea/compiler.xml
+#	new file:   Android/Zarlok/.idea/copyright/profiles_settings.xml
+#	new file:   Android/Zarlok/.idea/encodings.xml
+#	new file:   Android/Zarlok/.idea/gradle.xml
+#	new file:   Android/Zarlok/.idea/libraries/appcompat_v7_19_1_0.xml
+#	new file:   Android/Zarlok/.idea/libraries/support_v4_19_1_0.xml
+#	new file:   Android/Zarlok/.idea/misc.xml
+#	new file:   Android/Zarlok/.idea/modules.xml
+#	new file:   Android/Zarlok/.idea/scopes/scope_settings.xml
+#	new file:   Android/Zarlok/.idea/vcs.xml
+#	deleted:    Android/Zarlok/.project
+#	deleted:    Android/Zarlok/.settings/org.eclipse.jdt.core.prefs
+#	deleted:    Android/Zarlok/AndroidManifest.xml
+#	new file:   Android/Zarlok/Zarlok.iml
+#	new file:   Android/Zarlok/app/.gitignore
+#	new file:   Android/Zarlok/app/app.iml
+#	new file:   Android/Zarlok/app/build.gradle
+#	renamed:    Android/Zarlok/proguard-project.txt -> Android/Zarlok/app/proguard-rules.txt
+#	renamed:    Android/Zarlok/bin/AndroidManifest.xml -> Android/Zarlok/app/src/main/AndroidManifest.xml
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/Database.java
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/Food.java
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/HistoryFragment.java
+#	renamed:    Android/Zarlok/src/com/example/zarlok/LoginActivity.java -> Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/LoginActivity.java
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/MainActivity.java
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/MainFragment.java
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/ServerAPI.java
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/ServerConnection.java
+#	new file:   Android/Zarlok/app/src/main/java/pl/vetinari/zarlok/TabsPagerAdapter.java
+#	renamed:    Android/Zarlok/res/drawable-hdpi/ic_launcher.png -> Android/Zarlok/app/src/main/res/drawable-hdpi/ic_launcher.png
+#	renamed:    Android/Zarlok/res/drawable-mdpi/ic_launcher.png -> Android/Zarlok/app/src/main/res/drawable-mdpi/ic_launcher.png
+#	renamed:    Android/Zarlok/res/drawable-xhdpi/ic_launcher.png -> Android/Zarlok/app/src/main/res/drawable-xhdpi/ic_launcher.png
+#	renamed:    Android/Zarlok/res/drawable-xxhdpi/ic_launcher.png -> Android/Zarlok/app/src/main/res/drawable-xxhdpi/ic_launcher.png
+#	renamed:    Android/Zarlok/res/layout/activity_login.xml -> Android/Zarlok/app/src/main/res/layout/activity_login.xml
+#	new file:   Android/Zarlok/app/src/main/res/layout/activity_main.xml
+#	renamed:    Android/Zarlok/res/layout/activity_history.xml -> Android/Zarlok/app/src/main/res/layout/fragment_history.xml
+#	renamed:    Android/Zarlok/res/layout/activity_main.xml -> Android/Zarlok/app/src/main/res/layout/fragment_main.xml
+#	renamed:    Android/Zarlok/res/menu/history.xml -> Android/Zarlok/app/src/main/res/menu/history.xml
+#	renamed:    Android/Zarlok/res/menu/login.xml -> Android/Zarlok/app/src/main/res/menu/login.xml
+#	renamed:    Android/Zarlok/res/menu/main.xml -> Android/Zarlok/app/src/main/res/menu/main.xml
+#	renamed:    Android/Zarlok/res/values-large/styles.xml -> Android/Zarlok/app/src/main/res/values-large/styles.xml
+#	renamed:    Android/Zarlok/res/values-sw600dp/dimens.xml -> Android/Zarlok/app/src/main/res/values-sw600dp/dimens.xml
+#	renamed:    Android/Zarlok/res/values-sw720dp-land/dimens.xml -> Android/Zarlok/app/src/main/res/values-sw720dp-land/dimens.xml
+#	renamed:    Android/Zarlok/res/values-v11/styles.xml -> Android/Zarlok/app/src/main/res/values-v11/styles.xml
+#	renamed:    Android/Zarlok/res/values-v14/styles.xml -> Android/Zarlok/app/src/main/res/values-v14/styles.xml
+#	new file:   Android/Zarlok/app/src/main/res/values-w820dp/dimens.xml
+#	renamed:    Android/Zarlok/res/values/dimens.xml -> Android/Zarlok/app/src/main/res/values/dimens.xml
+#	renamed:    Android/Zarlok/res/values/strings.xml -> Android/Zarlok/app/src/main/res/values/strings.xml
+#	renamed:    Android/Zarlok/res/values/strings_activity_login.xml -> Android/Zarlok/app/src/main/res/values/strings_activity_login.xml
+#	renamed:    Android/Zarlok/res/values/styles.xml -> Android/Zarlok/app/src/main/res/values/styles.xml
+#	deleted:    Android/Zarlok/bin/Zarlok.apk
+#	deleted:    Android/Zarlok/bin/classes.dex
+#	deleted:    Android/Zarlok/bin/dexedLibs/android-support-v4-58372885820889d2a35b21d6a6fcc3db.jar
+#	deleted:    Android/Zarlok/bin/dexedLibs/android-support-v4-a6e198a54da649b2c3161bba962629fc.jar
+#	deleted:    Android/Zarlok/bin/jarlist.cache
+#	deleted:    Android/Zarlok/bin/res/crunch/drawable-hdpi/ic_launcher.png
+#	deleted:    Android/Zarlok/bin/res/crunch/drawable-mdpi/ic_launcher.png
+#	deleted:    Android/Zarlok/bin/res/crunch/drawable-xhdpi/ic_launcher.png
+#	deleted:    Android/Zarlok/bin/res/crunch/drawable-xxhdpi/ic_launcher.png
+#	deleted:    Android/Zarlok/bin/resources.ap_
+#	deleted:    "Android/Zarlok/bin/\305\273ar\305\202ok.apk"
+#	new file:   Android/Zarlok/build.gradle
+#	new file:   Android/Zarlok/gradle.properties
+#	new file:   Android/Zarlok/gradle/wrapper/gradle-wrapper.jar
+#	new file:   Android/Zarlok/gradle/wrapper/gradle-wrapper.properties
+#	new file:   Android/Zarlok/gradlew
+#	new file:   Android/Zarlok/gradlew.bat
+#	deleted:    Android/Zarlok/ic_launcher-web.png
+#	deleted:    Android/Zarlok/libs/android-support-v4.jar
+#	deleted:    Android/Zarlok/project.properties
+#	new file:   Android/Zarlok/settings.gradle
+#	deleted:    Android/Zarlok/src/com/example/zarlok/HistoryActivity.java
+#	deleted:    Android/Zarlok/src/com/example/zarlok/MainActivity.java
+#	deleted:    Android/Zarlok/src/com/example/zarlok/ServerAPI.java
+#	deleted:    Android/Zarlok/src/com/example/zarlok/ServerConnection.java
+#	new file:   tloh5w1s.qrv.txt
+#	new file:   w4yeikub.jpi.txt
+#	new file:   wtyvcqdg.jke.txt
+#
+

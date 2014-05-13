@@ -2,7 +2,7 @@
 <resources>
 
     <string name="app_name">Żarłok</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_refresh">Odśwież</string>
     <string name="hello_world">Wybierz kategorię i posiłek:</string>
 
     <string-array name="categories_array">

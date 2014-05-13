@@ -33,7 +33,9 @@
         <Button
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:text="Zapisz" />
+            android:text="Zapisz"
+            android:layout_marginTop="50dp"
+            android:id="@+id/button_save" />
 
     </LinearLayout>
 </RelativeLayout>

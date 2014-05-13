@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
@@ -98,6 +99,22 @@ public class MainActivity extends FragmentActivity implements TabListener {
 
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle item selection
+        switch (item.getItemId()) {
+            case R.id.action_refresh:
+                showProgress(true);
+                DataRefreshTask task = new DataRefreshTask();
+                task.execute();
+
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+
+
     @TargetApi(Build.VERSION_CODES.HONEYCOMB_MR2)
     private void showProgress(final boolean show) {
         // On Honeycomb MR2 we have the ViewPropertyAnimator APIs, which allow
@@ -149,7 +166,7 @@ public class MainActivity extends FragmentActivity implements TabListener {
             if(success){
                 showProgress(false);
                 Spinner spinner = (Spinner)viewPager.findViewById(R.id.spinner_categories);
-                ArrayAdapter<String> adapter = new ArrayAdapter<String>(viewPager.getContext(), android.R.layout.simple_spinner_item,  Database.instance().getCategories());//ArrayAdapter.createFromResource(getActivity().getBaseContext(), Database.instance().getCategories(), android.R.layout.simple_spinner_item);
+                ArrayAdapter<String> adapter = new ArrayAdapter<String>(viewPager.getContext(), android.R.layout.simple_spinner_item,  Database.instance().getCategories());
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
             } else {
