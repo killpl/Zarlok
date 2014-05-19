@@ -7,7 +7,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -92,4 +95,41 @@ public class ServerAPI {
         return true;
     }
 
+
+    private static Date parseDate(String dateString){
+        Date ret = new Date();
+        try {
+            DateFormat f = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSSSSSZ");
+            ret = f.parse(dateString);
+        } catch (Exception ex) {}
+        return ret;
+    }
+
+    public ArrayList<History> getHistory() {
+        String resp = connection.request("/history/"+APIKey+"/");
+
+        if(resp.contentEquals("Error"))
+            return null;
+
+        ArrayList<History> history = new ArrayList<History>();
+
+        try {
+            JSONObject json = new JSONObject(resp);
+            JSONArray historyArray = json.getJSONArray("history");
+
+            for(int i=0; i<historyArray.length(); i++){
+                JSONObject obj = historyArray.getJSONObject(i);
+
+                History hist = new History();
+                hist.foodId = obj.getInt("id");
+                hist.date = parseDate(obj.getString("date"));
+
+                history.add(hist);
+            }
+        } catch (JSONException ex){
+            return null;
+        }
+        return history;
+
+    }
 }

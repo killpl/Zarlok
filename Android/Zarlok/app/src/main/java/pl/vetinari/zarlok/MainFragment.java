@@ -79,6 +79,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
             } else {
                 message = "Błąd zapisu :(";
             }
+
             Toast.makeText(view.getContext(), message, Toast.LENGTH_LONG).show();
         }
     };

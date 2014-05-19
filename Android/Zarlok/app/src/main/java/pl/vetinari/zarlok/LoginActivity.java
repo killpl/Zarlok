@@ -47,6 +47,7 @@ public class LoginActivity extends Activity {
 	// UI references.
 	private EditText mEmailView;
 	private EditText mPasswordView;
+    private EditText mServerView;
 	private View mLoginFormView;
 	private View mLoginStatusView;
 	private TextView mLoginStatusMessageView;
@@ -63,23 +64,25 @@ public class LoginActivity extends Activity {
 		mEmailView.setText(mEmail);
 
         mPasswordView = (EditText) findViewById(R.id.password);
+        mServerView = (EditText) findViewById(R.id.server_address);
 
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         mEmailView.setText(sharedPref.getString("email", ""));
+        mServerView.setText(sharedPref.getString("ip", ""));
         if(!sharedPref.getString("email", "").equals("")) mPasswordView.requestFocus();
 
 		mPasswordView
 				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-					@Override
-					public boolean onEditorAction(TextView textView, int id,
-							KeyEvent keyEvent) {
-						if (id == R.id.login || id == EditorInfo.IME_NULL) {
-							attemptLogin();
-							return true;
-						}
-						return false;
-					}
-				});
+                    @Override
+                    public boolean onEditorAction(TextView textView, int id,
+                                                  KeyEvent keyEvent) {
+                        if (id == R.id.login || id == EditorInfo.IME_NULL) {
+                            attemptLogin();
+                            return true;
+                        }
+                        return false;
+                    }
+                });
 
 		mLoginFormView = findViewById(R.id.login_form);
 		mLoginStatusView = findViewById(R.id.login_status);
@@ -143,6 +146,7 @@ public class LoginActivity extends Activity {
         SharedPreferences sharedPref = this.getPreferences(Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("email", mEmail);
+        editor.putString("ip", mServerView.getText().toString());
         editor.commit();
 
 		if (cancel) {
@@ -154,10 +158,10 @@ public class LoginActivity extends Activity {
 			// perform the user login attempt.
 			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
 			showProgress(true);
+
 			mAuthTask = new UserLoginTask();
 			Object[] creditentials = {mEmail, mPassword, this};
             mAuthTask.execute(creditentials);
-
 		}
 	}
 
@@ -215,8 +219,8 @@ public class LoginActivity extends Activity {
 
             view = (LoginActivity)params[2];
             // Simulate network access.
-            ServerAPI api = new ServerAPI("http://192.168.1.101:8000");
-            Database.instance().setServer("http://192.168.1.101:8000");
+            ServerAPI api = new ServerAPI("http://"+mServerView.getText().toString()+":8000");
+            Database.instance().setServer("http://"+mServerView.getText().toString()+":8000");
             if(Database.instance().login((String)params[0], (String)params[1])) {
                 return true;
             }

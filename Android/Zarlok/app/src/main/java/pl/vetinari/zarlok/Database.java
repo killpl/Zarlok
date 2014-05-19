@@ -12,11 +12,25 @@ public final class Database {
 
     private Map<Integer, String> categories = new HashMap<Integer, String>();
     private ArrayList<Food> food;
+    private ArrayList<History> history = new ArrayList<History>();
+
     private ServerAPI api;
+
 
     private static volatile Database inst = null;
 
     private Database(){}
+
+    private Food getFoodById(int id){
+        Food f = null;
+
+        for(Food item : food){
+            if(item.id==id)
+                f = item;
+        }
+
+        return f;
+    }
 
     public static Database instance(){
         if (inst == null) {
@@ -37,10 +51,32 @@ public final class Database {
         categories = api.getCategories();
         food = api.getFood();
 
-        if(categories==null || food==null)
+        history.clear();
+
+        ArrayList<History> hist =api.getHistory();
+        if(hist!=null) {
+            history.addAll(hist);
+        }
+
+        if(categories==null || food==null || history==null)
             return false;
 
         return true;
+    }
+
+    public History getHistoryItem(int position){
+        History item = history.get(position);
+
+        if(item!=null) {
+            item.food = getFoodById(item.foodId);
+            item.category = categories.get(item.food.categoryId);
+        }
+        return item;
+    }
+
+    public int getHistoryCount(){
+        if(history==null) return 0;
+        return history.size();
     }
 
     public ArrayList<String> getCategories(){
@@ -72,8 +108,14 @@ public final class Database {
     public Boolean save(String category, String foodName){
 
         for(Food f : food) {
-            if (f.name.equals(foodName )&& categories.get(f.categoryId).equals(category))
-                return api.save(f.id);
+            if (f.name.equals(foodName )&& categories.get(f.categoryId).equals(category)) {
+                boolean result = api.save(f.id);
+
+                history.clear();
+                history.addAll(api.getHistory());
+
+                return result;
+            }
         }
 
         return false;

@@ -16,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import android.widget.Spinner;
 
 public class MainActivity extends FragmentActivity implements TabListener {
@@ -87,6 +88,10 @@ public class MainActivity extends FragmentActivity implements TabListener {
     @Override
     public void onTabSelected(Tab tab, FragmentTransaction ft) {
         viewPager.setCurrentItem(tab.getPosition());
+
+        ListView list = (ListView)viewPager.findViewById(R.id.history_list);
+        if(list!=null)
+            ((HistoryAdapter)list.getAdapter()).update();
     }
 
     @Override
@@ -169,6 +174,9 @@ public class MainActivity extends FragmentActivity implements TabListener {
                 ArrayAdapter<String> adapter = new ArrayAdapter<String>(viewPager.getContext(), android.R.layout.simple_spinner_item,  Database.instance().getCategories());
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 spinner.setAdapter(adapter);
+
+                ListView list = (ListView)viewPager.findViewById(R.id.history_list);
+                ((HistoryAdapter)list.getAdapter()).update();
             } else {
                 finish();//showProgress(false);
             }
