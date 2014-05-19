@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Żarłok</string>
+    <string name="action_refresh">Odśwież</string>
+    <string name="hello_world">Wybierz kategorię i posiłek:</string>
+
+    <string-array name="categories_array">
+        <item>Słodycze</item>
+        <item>Obiady</item>
+        <item>Śniadania</item>
+        <item>Przekąski</item>
+        <item>Owoce</item>
+        <item>Warzywa</item>
+        <item>Sałatki</item>
+    </string-array>
+
+    <string name="downloading_content">Pobieranie danych</string>
+    <string name="title_activity_history">Historia posiłków</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+</resources>
