@@ -67,7 +67,7 @@ public final class Database {
     public History getHistoryItem(int position){
         History item = history.get(position);
 
-        if(item!=null) {
+        if(item!=null && item.foodId>0) {
             item.food = getFoodById(item.foodId);
             item.category = categories.get(item.food.categoryId);
         }
@@ -112,8 +112,10 @@ public final class Database {
                 boolean result = api.save(f.id);
 
                 history.clear();
-                history.addAll(api.getHistory());
-
+                ArrayList<History> hist =api.getHistory();
+                if(hist!=null) {
+                    history.addAll(hist);
+                }
                 return result;
             }
         }

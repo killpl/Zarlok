@@ -2,6 +2,7 @@ package pl.vetinari.zarlok;
 
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -45,10 +46,20 @@ public class HistoryAdapter extends BaseAdapter {
         TextView date = (TextView)vi.findViewById(R.id.date);
 
         History item = Database.instance().getHistoryItem(position);
-        name.setText(item.food.name);
-        category.setText(item.category);
-        date.setText(new DateFormat().format("hh:mm dd.MM.yyyy", item.date));
 
+        // Achievements
+        if(item.foodId<0){
+            name.setText("Zdobyłeś osiągnięcie: " + item.category);
+            name.setTextSize(12);
+            name.setTextColor(Color.BLUE);
+            date.setText("");
+        }
+        else // History
+        {
+            name.setText(item.food.name);
+            category.setText(item.category);
+            date.setText(new DateFormat().format("hh:mm dd.MM.yyyy", item.date));
+        }
         return vi;
     }
 

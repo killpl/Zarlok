@@ -115,6 +115,20 @@ public class ServerAPI {
 
         try {
             JSONObject json = new JSONObject(resp);
+
+            JSONArray achievementsArray = json.getJSONArray("achievements");
+
+            for(int i=0; i<achievementsArray.length(); i++){
+                JSONObject obj = achievementsArray.getJSONObject(i);
+
+                History hist = new History();
+                hist.foodId = -1;
+                hist.date = parseDate(obj.getString("date"));
+                hist.category = obj.getString("achievement");
+
+                history.add(hist);
+            }
+
             JSONArray historyArray = json.getJSONArray("history");
 
             for(int i=0; i<historyArray.length(); i++){
@@ -126,6 +140,8 @@ public class ServerAPI {
 
                 history.add(hist);
             }
+
+
         } catch (JSONException ex){
             return null;
         }

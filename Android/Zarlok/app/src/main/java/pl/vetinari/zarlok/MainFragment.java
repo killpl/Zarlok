@@ -22,6 +22,7 @@ public class MainFragment extends android.support.v4.app.Fragment {
 
     Spinner foodSpinner;
     Spinner categoriesSpinner;
+    Button save;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -50,10 +51,12 @@ public class MainFragment extends android.support.v4.app.Fragment {
             }
         });
 
-        Button save = (Button)view.findViewById(R.id.button_save);
+        save = (Button)view.findViewById(R.id.button_save);
         save.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
+                save.setEnabled(false);
+                save.setText("Trwa zapisywanie...");
                 new SaveTask().execute(v);
             }
         });
@@ -79,6 +82,9 @@ public class MainFragment extends android.support.v4.app.Fragment {
             } else {
                 message = "Błąd zapisu :(";
             }
+
+            save.setEnabled(true);
+            save.setText("Zapisz");
 
             Toast.makeText(view.getContext(), message, Toast.LENGTH_LONG).show();
         }
