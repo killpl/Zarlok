@@ -9,7 +9,7 @@ using ZarlokMvc.ViewModels;
 
 namespace ZarlokMvc.Controllers
 {
-    [Authorize(Roles = "user")]
+    [Authorize]
     public class FriendshipController : Controller
     {
         private FriendshipModel friendshipModel = new FriendshipModel();

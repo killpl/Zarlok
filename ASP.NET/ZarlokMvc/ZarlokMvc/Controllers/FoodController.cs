@@ -15,7 +15,7 @@ namespace ZarlokMvc.Controllers
 
         //
         // GET: /Food
-        [Authorize(Roles = "admin, user")]
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.Message = "";

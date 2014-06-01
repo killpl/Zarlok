@@ -8,7 +8,7 @@ using ZarlokMvc.ViewModels;
 
 namespace ZarlokMvc.Controllers
 {
-    [Authorize(Roles = "user")]
+    [Authorize]
     public class ProfileController : Controller
     {
         private ProfileModel profileModel = new ProfileModel();

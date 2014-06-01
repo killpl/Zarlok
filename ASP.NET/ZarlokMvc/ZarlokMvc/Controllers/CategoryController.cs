@@ -14,7 +14,7 @@ namespace ZarlokMvc.Controllers
 
         //
         // GET: /Category
-        [Authorize(Roles = "admin, user")]
+        [Authorize]
         public ActionResult Index()
         {
             ViewBag.Message = "";

@@ -8,7 +8,7 @@ using ZarlokMvc.ViewModels;
 
 namespace ZarlokMvc.Controllers
 {
-    [Authorize(Roles = "user")]
+    [Authorize]
     public class EatenController : Controller
     {
         private EatenModel eatenModel = new EatenModel();

@@ -7,7 +7,7 @@ using ZarlokMvc.Models;
 
 namespace ZarlokMvc.Controllers
 {
-    [Authorize(Roles = "user")]
+    [Authorize]
     public class ProfileAchievementController : Controller
     {
         private ProfileAchievementModel profileAchievementModel = new ProfileAchievementModel();
