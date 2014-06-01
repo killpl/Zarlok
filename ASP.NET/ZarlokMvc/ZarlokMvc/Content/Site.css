@@ -89,7 +89,6 @@ h3 {
     font-weight: bold;
     margin-bottom: 7px;
     font-size: 1.55em;
-    margin-bottom: -5px;
 }
 
 h1 {
@@ -138,10 +137,10 @@ h6 {
         text-decoration: none;
     }
 
-    h7 {
-        font-size: 1.3em;
-        font-style: italic;
-    }
+h7 {
+    font-size: 1.3em;
+    font-style: italic;
+}
 
 /* main layout
 ----------------------------------------------------------*/
@@ -175,9 +174,8 @@ footer {
     text-shadow: 2px 3px 0px rgba(0, 0, 0, 0.1);
     color: #06C3AB;
     font-size: 60px;
-    margin-top: 0px;
+    margin: 0;
     font-weight: normal;
-    margin-bottom: 5px;
 }
 
 .site-title a, .site-title a:hover, .site-title a:active {
@@ -191,10 +189,10 @@ footer {
 /* login
 ----------------------------------------------------------*/
 #login {
+    display: block;
     text-align: right;
-    padding: 5px 2px 10px 2px;
+    margin: 0 0 10px;
     font-size: 1.2em;
-    margin-bottom: 30px;
 }
 
     #login a {
@@ -203,7 +201,6 @@ footer {
         padding: 2px 3px;
         text-decoration: none;
     }
-
 
     #login a.username {
         background: none;
@@ -224,7 +221,6 @@ footer {
         display: inline;
         list-style: none;
     }
-
 
 /* menu
 ----------------------------------------------------------*/

@@ -80,7 +80,9 @@
     <Property Name="sent" Type="datetime" />
   </EntityType>
   <Association Name="FK__Eaten__foodId__09A971A2">
-    <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
+    <End Role="Food" Type="Self.Food" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Eaten" Type="Self.Eaten" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Food">
@@ -92,7 +94,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Eaten__profileId__0A9D95DB">
-    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Eaten" Type="Self.Eaten" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Profile">
@@ -104,7 +108,9 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Food__categoryId__06CD04F7">
-    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1">
+      <OnDelete Action="Cascade" />
+    </End>
     <End Role="Food" Type="Self.Food" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Category">
@@ -112,30 +118,6 @@
       </Principal>
       <Dependent Role="Food">
         <PropertyRef Name="categoryId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Friendshi__recei__6EC0713C">
-    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
-    <End Role="Friendship" Type="Self.Friendship" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Friendship">
-        <PropertyRef Name="receiver" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Friendshi__sende__6DCC4D03">
-    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
-    <End Role="Friendship" Type="Self.Friendship" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Friendship">
-        <PropertyRef Name="sender" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -148,54 +130,6 @@
       </Principal>
       <Dependent Role="Identifier">
         <PropertyRef Name="profileId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProfileAc__achie__2180FB33">
-    <End Role="Achievement" Type="Self.Achievement" Multiplicity="0..1" />
-    <End Role="ProfileAchievement" Type="Self.ProfileAchievement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Achievement">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="ProfileAchievement">
-        <PropertyRef Name="achievementId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__ProfileAc__profi__208CD6FA">
-    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
-    <End Role="ProfileAchievement" Type="Self.ProfileAchievement" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="ProfileAchievement">
-        <PropertyRef Name="profileId" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Request__receive__72910220">
-    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
-    <End Role="Request" Type="Self.Request" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Request">
-        <PropertyRef Name="receiver" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK__Request__sender__719CDDE7">
-    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
-    <End Role="Request" Type="Self.Request" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="Profile">
-        <PropertyRef Name="id" />
-      </Principal>
-      <Dependent Role="Request">
-        <PropertyRef Name="sender" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -221,33 +155,9 @@
       <End Role="Category" EntitySet="Category" />
       <End Role="Food" EntitySet="Food" />
     </AssociationSet>
-    <AssociationSet Name="FK__Friendshi__recei__6EC0713C" Association="Self.FK__Friendshi__recei__6EC0713C">
-      <End Role="Profile" EntitySet="Profile" />
-      <End Role="Friendship" EntitySet="Friendship" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Friendshi__sende__6DCC4D03" Association="Self.FK__Friendshi__sende__6DCC4D03">
-      <End Role="Profile" EntitySet="Profile" />
-      <End Role="Friendship" EntitySet="Friendship" />
-    </AssociationSet>
     <AssociationSet Name="FK__Identifie__profi__1BC821DD" Association="Self.FK__Identifie__profi__1BC821DD">
       <End Role="Profile" EntitySet="Profile" />
       <End Role="Identifier" EntitySet="Identifier" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProfileAc__achie__2180FB33" Association="Self.FK__ProfileAc__achie__2180FB33">
-      <End Role="Achievement" EntitySet="Achievement" />
-      <End Role="ProfileAchievement" EntitySet="ProfileAchievement" />
-    </AssociationSet>
-    <AssociationSet Name="FK__ProfileAc__profi__208CD6FA" Association="Self.FK__ProfileAc__profi__208CD6FA">
-      <End Role="Profile" EntitySet="Profile" />
-      <End Role="ProfileAchievement" EntitySet="ProfileAchievement" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Request__receive__72910220" Association="Self.FK__Request__receive__72910220">
-      <End Role="Profile" EntitySet="Profile" />
-      <End Role="Request" EntitySet="Request" />
-    </AssociationSet>
-    <AssociationSet Name="FK__Request__sender__719CDDE7" Association="Self.FK__Request__sender__719CDDE7">
-      <End Role="Profile" EntitySet="Profile" />
-      <End Role="Request" EntitySet="Request" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

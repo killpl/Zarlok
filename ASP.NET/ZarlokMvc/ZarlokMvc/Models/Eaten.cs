@@ -17,6 +17,8 @@ namespace ZarlokMvc.Models
     public partial class Eaten
     {
         public int id { get; set; }
+
+        [DisplayName("Jedzenie")]
         public Nullable<int> foodId { get; set; }
         public Nullable<int> profileId { get; set; }
 

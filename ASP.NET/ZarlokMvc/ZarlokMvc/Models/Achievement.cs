@@ -22,7 +22,7 @@ namespace ZarlokMvc.Models
     
         public int id { get; set; }
 
-        [DisplayName("Nazwa")]
+        [DisplayName("Osi¹gniêcie")]
         public string name { get; set; }
         public string icon { get; set; }
     

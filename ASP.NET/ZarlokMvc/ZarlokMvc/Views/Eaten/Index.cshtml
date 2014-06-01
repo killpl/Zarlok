@@ -21,42 +21,6 @@
 }
 else
 {
-    <table class="table table-hover table-condensed">
-        <thead>
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.date)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Food.name)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Food.calories)
-                </th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model) {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Food.name)
-                    </td>
-                     <td>
-                        @Html.DisplayFor(modelItem => item.Food.calories)
-                    </td>
-                    <td>
-                        @Html.ActionLink(" ", "DeleteEaten", "Eaten", new { id = item.id }, new { @class = "glyphicon glyphicon glyphicon-remove-circle btn btn-danger", @title="Usuń" })
-                    </td>
-                </tr>
-            }
-        </tbody>
-    </table>
-    
-        
     <div id="container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
    
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
@@ -124,5 +88,39 @@ else
                 data: newDataArray,
             },]
        });
-    </script>    
+    </script> 
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Food.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Food.calories)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Food.name)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.Food.calories)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "DeleteEaten", "Eaten", new { id = item.id }, new { @class = "glyphicon glyphicon glyphicon-remove-circle btn btn-danger", @title="Usuń" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>   
 }

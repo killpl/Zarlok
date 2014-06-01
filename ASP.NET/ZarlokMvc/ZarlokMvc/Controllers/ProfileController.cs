@@ -38,7 +38,6 @@ namespace ZarlokMvc.Controllers
             }
             return View(profiles);
         }
-
       
         public ActionResult AddFriend(int id)
         {

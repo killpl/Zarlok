@@ -22,7 +22,7 @@ namespace ZarlokMvc.Models
     
         public int id { get; set; }
 
-        [DisplayName("Nazwa kategorii")]
+        [DisplayName("Nazwa")]
         public string name { get; set; }
     
         public virtual ICollection<Food> Food { get; set; }
