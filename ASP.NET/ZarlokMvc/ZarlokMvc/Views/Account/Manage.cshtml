@@ -1,0 +1,18 @@
+﻿@model ZarlokMvc.Models.UserModel
+@{
+    ViewBag.Title = "Konto";
+}
+
+<h2>Konto</h2>
+<div class="float-left" style="width:50%">
+<h4>Jesteś zalogowany jako <strong>@User.Identity.Name</strong></h4><br />
+    @Html.Partial("_ChangePasswordPartial", Model.PasswordModel)
+</div>
+<br />
+<aside style="width:50%">
+    @Html.Partial("EditUser", Model.ProfileModel)
+</aside>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

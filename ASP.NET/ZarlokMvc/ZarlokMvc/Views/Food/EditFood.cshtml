@@ -1,0 +1,51 @@
+﻿@model ZarlokMvc.ViewModels.FoodViewModel
+
+@{
+    ViewBag.Title = "Edytuj jedzenie";
+}
+
+<h2>Edytuj jedzenie</h2><br />
+@using (Html.BeginForm("EditFood", "Food", FormMethod.Post, new { enctype = "multipart/form-data" })) 
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+
+ <fieldset>
+            <table><tr><td>
+                <div class="editor-label">@Html.LabelFor(model => model.name) </div>
+            </td>
+             <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.name)
+                    @Html.ValidationMessageFor(model => model.name)
+                </div>
+            </td></tr>
+            <tr><td>
+                <div class="editor-label">@Html.LabelFor(model => model.calories) </div>
+            </td>
+             <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.calories)
+                    @Html.ValidationMessageFor(model => model.calories)
+                </div>
+            </td></tr>
+            <tr><td>
+                <div class="editor-label">@Html.LabelFor(model => model.categoryId)</div>
+            </td>
+            <td>  
+                <div class="editor-field">
+                    <div class="dropdownlist">
+                        @Html.DropDownListFor(model => model.categoryId, new SelectList(ViewBag.Categories, "id", "name", Model == null ? 0 : Model.id)) 
+                    </div>
+                </div>
+                </td></tr>
+            </table>
+            <br />
+            <p><input type="submit" value="Zapisz" class="btn btn-info" /> 
+                 @Html.ActionLink("Powrót", "Index") <span class="glyphicon glyphicon-share-alt"></span></p>
+        </fieldset>
+}
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<ZarlokMvc.Models.Eaten>
+
+@{
+    ViewBag.Title = "Historia jedzenia";
+}
+
+<h2>Historia jedzenia</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("user"))
+    {
+        <p>
+            <h4>@Html.ActionLink("Dodaj nowe jedzenie do historii", "CreateEaten")</h4>
+        </p>
+    }
+}
+<br />
+@if(!String.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="well">@ViewBag.Error</div>
+}
+else
+{
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Food.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Food.calories)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Food.name)
+                    </td>
+                     <td>
+                        @Html.DisplayFor(modelItem => item.Food.calories)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "DeleteEaten", "Eaten", new { id = item.id }, new { @class = "glyphicon glyphicon glyphicon-remove-circle btn btn-danger", @title="Usuń" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}

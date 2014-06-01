@@ -1,0 +1,28 @@
+﻿@model ZarlokMvc.ViewModels.CategoryViewModel
+
+@{
+    ViewBag.Title = "Edytuj kategorię";
+}
+
+<h2>Edytuj kategorię</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.id)
+        <form role="form">
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+            <input type="submit" value="Zapisz" class="btn btn-default" />
+        </form>
+}
+
+<div>
+    @Html.ActionLink("Powrót", "Index")
+</div>
+

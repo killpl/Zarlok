@@ -1,0 +1,29 @@
+﻿@model ZarlokMvc.ViewModels.AchievementViewModel
+
+@{
+    ViewBag.Title = "Dodaj nowe osiągnięcie";
+}
+
+<h2>Dodaj nowe osiągnięcie</h2>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <form role="form">
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+            <input type="submit" value="Dodaj" class="btn btn-default" />
+        </form>
+}
+
+<div>
+    @Html.ActionLink("Powrót", "Index")
+</div>
+
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/jquery.validate.min.js"></script>
+<script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>

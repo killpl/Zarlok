@@ -1,0 +1,273 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZarlokModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Achievement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="icon" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ProfileAchievement" Relationship="ZarlokModel.FK__ProfileAc__achie__2180FB33" FromRole="Achievement" ToRole="ProfileAchievement" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Food" Relationship="Self.FK__Food__categoryId__3A81B327" FromRole="Category" ToRole="Food" />
+  </EntityType>
+  <EntityType Name="Eaten">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="foodId" Type="Int32" />
+    <Property Name="profileId" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Food" Relationship="Self.FK__Eaten__foodId__3D5E1FD2" FromRole="Eaten" ToRole="Food" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK__Eaten__profileId__3E52440B" FromRole="Eaten" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="calories" Type="Int32" />
+    <Property Name="categoryId" Type="Int32" />
+    <NavigationProperty Name="Category" Relationship="Self.FK__Food__categoryId__3A81B327" FromRole="Food" ToRole="Category" />
+    <NavigationProperty Name="Eaten" Relationship="Self.FK__Eaten__foodId__3D5E1FD2" FromRole="Food" ToRole="Eaten" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="firstname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="surname" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="type" Type="String" MaxLength="6" Nullable="false" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="Eaten" Relationship="Self.FK__Eaten__profileId__3E52440B" FromRole="Profile" ToRole="Eaten" />
+    <NavigationProperty Name="ProfileAchievement" Relationship="Self.FK__ProfileAc__profi__440B1D61" FromRole="Profile" ToRole="ProfileAchievement" />
+    <NavigationProperty Name="Identifier" Relationship="ZarlokModel.FK__Identifie__profi__1BC821DD" FromRole="Profile" ToRole="Identifier" />
+    <NavigationProperty Name="Friendship" Relationship="ZarlokModel.FK__Friendshi__recei__6EC0713C" FromRole="Profile" ToRole="Friendship" />
+    <NavigationProperty Name="Friendship1" Relationship="ZarlokModel.FK__Friendshi__sende__6DCC4D03" FromRole="Profile" ToRole="Friendship" />
+    <NavigationProperty Name="Request" Relationship="ZarlokModel.FK__Request__receive__72910220" FromRole="Profile" ToRole="Request" />
+    <NavigationProperty Name="Request1" Relationship="ZarlokModel.FK__Request__sender__719CDDE7" FromRole="Profile" ToRole="Request" />
+  </EntityType>
+  <EntityType Name="ProfileAchievement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="profileId" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Profile" Relationship="Self.FK__ProfileAc__profi__440B1D61" FromRole="ProfileAchievement" ToRole="Profile" />
+    <Property Name="achievementId" Type="Int32" />
+    <NavigationProperty Name="Achievement" Relationship="ZarlokModel.FK__ProfileAc__achie__2180FB33" FromRole="ProfileAchievement" ToRole="Achievement" />
+  </EntityType>
+  <Association Name="FK__Food__categoryId__3A81B327">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Food">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Eaten__foodId__3D5E1FD2">
+    <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
+    <End Role="Eaten" Type="Self.Eaten" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Eaten">
+        <PropertyRef Name="foodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Eaten__profileId__3E52440B">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Eaten" Type="Self.Eaten" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Eaten">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProfileAc__profi__440B1D61">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="ProfileAchievement" Type="Self.ProfileAchievement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfileAchievement">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZarlokEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Achievement" EntityType="Self.Achievement" />
+    <EntitySet Name="Category" EntityType="Self.Category" />
+    <EntitySet Name="Eaten" EntityType="Self.Eaten" />
+    <EntitySet Name="Food" EntityType="Self.Food" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" />
+    <EntitySet Name="ProfileAchievement" EntityType="Self.ProfileAchievement" />
+    <AssociationSet Name="FK__Food__categoryId__3A81B327" Association="Self.FK__Food__categoryId__3A81B327">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Food" EntitySet="Food" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Eaten__foodId__3D5E1FD2" Association="Self.FK__Eaten__foodId__3D5E1FD2">
+      <End Role="Food" EntitySet="Food" />
+      <End Role="Eaten" EntitySet="Eaten" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Eaten__profileId__3E52440B" Association="Self.FK__Eaten__profileId__3E52440B">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Eaten" EntitySet="Eaten" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProfileAc__profi__440B1D61" Association="Self.FK__ProfileAc__profi__440B1D61">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="ProfileAchievement" EntitySet="ProfileAchievement" />
+    </AssociationSet>
+    <EntitySet Name="Identifier" EntityType="ZarlokModel.Identifier" />
+    <AssociationSet Name="FK__ProfileAc__achie__2180FB33" Association="ZarlokModel.FK__ProfileAc__achie__2180FB33">
+      <End Role="Achievement" EntitySet="Achievement" />
+      <End Role="ProfileAchievement" EntitySet="ProfileAchievement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Identifie__profi__1BC821DD" Association="ZarlokModel.FK__Identifie__profi__1BC821DD">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Identifier" EntitySet="Identifier" />
+    </AssociationSet>
+    <EntitySet Name="Friendship" EntityType="ZarlokModel.Friendship" />
+    <EntitySet Name="Request" EntityType="ZarlokModel.Request" />
+    <AssociationSet Name="FK__Friendshi__recei__6EC0713C" Association="ZarlokModel.FK__Friendshi__recei__6EC0713C">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Friendship" EntitySet="Friendship" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Friendshi__sende__6DCC4D03" Association="ZarlokModel.FK__Friendshi__sende__6DCC4D03">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Friendship" EntitySet="Friendship" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__receive__72910220" Association="ZarlokModel.FK__Request__receive__72910220">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__sender__719CDDE7" Association="ZarlokModel.FK__Request__sender__719CDDE7">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Identifier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="keyIdentifer" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="profileId" Type="Int32" />
+    <Property Name="date" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Profile" Relationship="ZarlokModel.FK__Identifie__profi__1BC821DD" FromRole="Identifier" ToRole="Profile" />
+  </EntityType>
+  <Association Name="FK__ProfileAc__achie__2180FB33">
+    <End Type="ZarlokModel.Achievement" Role="Achievement" Multiplicity="0..1" />
+    <End Type="ZarlokModel.ProfileAchievement" Role="ProfileAchievement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Achievement">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfileAchievement">
+        <PropertyRef Name="achievementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Identifie__profi__1BC821DD">
+    <End Type="ZarlokModel.Profile" Role="Profile" Multiplicity="0..1" />
+    <End Type="ZarlokModel.Identifier" Role="Identifier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Identifier">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Friendship">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sender" Type="Int32" />
+    <Property Name="receiver" Type="Int32" />
+    <NavigationProperty Name="Profile" Relationship="ZarlokModel.FK__Friendshi__recei__6EC0713C" FromRole="Friendship" ToRole="Profile" />
+    <NavigationProperty Name="Profile1" Relationship="ZarlokModel.FK__Friendshi__sende__6DCC4D03" FromRole="Friendship" ToRole="Profile" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="sender" Type="Int32" />
+    <Property Name="receiver" Type="Int32" />
+    <Property Name="sent" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Profile" Relationship="ZarlokModel.FK__Request__receive__72910220" FromRole="Request" ToRole="Profile" />
+    <NavigationProperty Name="Profile1" Relationship="ZarlokModel.FK__Request__sender__719CDDE7" FromRole="Request" ToRole="Profile" />
+  </EntityType>
+  <Association Name="FK__Friendshi__recei__6EC0713C">
+    <End Type="ZarlokModel.Profile" Role="Profile" Multiplicity="0..1" />
+    <End Type="ZarlokModel.Friendship" Role="Friendship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Friendship">
+        <PropertyRef Name="receiver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Friendshi__sende__6DCC4D03">
+    <End Type="ZarlokModel.Profile" Role="Profile" Multiplicity="0..1" />
+    <End Type="ZarlokModel.Friendship" Role="Friendship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Friendship">
+        <PropertyRef Name="sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__receive__72910220">
+    <End Type="ZarlokModel.Profile" Role="Profile" Multiplicity="0..1" />
+    <End Type="ZarlokModel.Request" Role="Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="receiver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__sender__719CDDE7">
+    <End Type="ZarlokModel.Profile" Role="Profile" Multiplicity="0..1" />
+    <End Type="ZarlokModel.Request" Role="Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

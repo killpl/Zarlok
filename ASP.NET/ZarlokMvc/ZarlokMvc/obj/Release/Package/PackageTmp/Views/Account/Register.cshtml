@@ -1,0 +1,54 @@
+﻿@model ZarlokMvc.Models.RegisterModel
+@{
+    ViewBag.Title = "Rejestracja";
+}
+
+<h2>Rejestracja</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary()
+ <fieldset>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Login )
+        </div>
+        <div class="editor-label">
+            @Html.TextBoxFor(m => m.Login)
+            @Html.ValidationMessageFor(m => m.Login)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Password)
+        </div>
+        <div class="editor-label">
+            @Html.PasswordFor(m => m.Password)
+            @Html.ValidationMessageFor(m => m.Password)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.ConfirmPassword)
+        </div>
+        <div class="editor-label">
+            @Html.PasswordFor(m => m.ConfirmPassword)
+            @Html.ValidationMessageFor(m => m.ConfirmPassword)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Firstname)
+        </div>
+        <div class="editor-label">
+            @Html.TextBoxFor(m => m.Firstname)
+            @Html.ValidationMessageFor(m => m.Firstname)
+        </div>
+        <div class="editor-label">
+            @Html.LabelFor(m => m.Surname)
+        </div>
+        <div class="editor-label">
+            @Html.TextBoxFor(m => m.Surname)
+            @Html.ValidationMessageFor(m => m.Surname)
+        </div>
+        <br />
+        <input type="submit" value="Zarejestruj" class="btn btn-info" />
+    </fieldset>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

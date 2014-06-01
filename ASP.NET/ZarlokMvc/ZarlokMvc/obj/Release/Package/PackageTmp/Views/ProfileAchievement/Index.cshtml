@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ZarlokMvc.Models.ProfileAchievement>
+
+@{
+    ViewBag.Title = "Moje osiągnięcia";
+}
+
+<h2>Moje osiagnięcia</h2>
+<br />
+@if(!String.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="well">@ViewBag.Error</div>
+}
+else
+{
+    <table class="table table-hover table-condensed">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Achievement.name)
+            </th>
+        </tr>
+        </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Achievement.name)
+            </td>
+        </tr>
+    }
+    </tbody>
+    </table>
+}

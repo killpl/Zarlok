@@ -1,0 +1,35 @@
+﻿@model ZarlokMvc.Models.LoginModel
+
+@{
+    ViewBag.Title = "Logowanie";
+}
+
+<h2>Logowanie</h2>
+
+@using (Html.BeginForm(new { ReturnUrl = ViewBag.ReturnUrl })) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <ol>
+            <li>
+                @Html.LabelFor(m => m.Login)
+                @Html.TextBoxFor(m => m.Login)
+                @Html.ValidationMessageFor(m => m.Login)
+            </li>
+            <li>
+                @Html.LabelFor(m => m.Password)
+                @Html.PasswordFor(m => m.Password)
+                @Html.ValidationMessageFor(m => m.Password)
+            </li>
+            <li>
+                @Html.CheckBoxFor(m => m.RememberMe)
+                @Html.LabelFor(m => m.RememberMe, new { @class = "checkbox" })
+            </li>
+        </ol>
+        <input type="submit" value="Zaloguj" />
+    </fieldset>
+    <p>
+        @Html.ActionLink("Zarejestruj się", "Register") jeśli nie posiadasz konta.
+    </p>
+}

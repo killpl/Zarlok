@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ZarlokMvc.ViewModels.InvitationListViewModel>
+
+@{
+    ViewBag.Title = "SentInvitationsList";
+    Layout = null;
+}
+
+<h4>Wysłane zaproszenia</h4>
+@if(Model.Count()>0){
+    <table class="table table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.login)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.invitationDate)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) {
+                <tr class="row_link" href="/Index/Profile/@item.senderId">
+                    <td>
+                        @Html.DisplayFor(modelItem => item.login)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.invitationDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink(" ", "RejectInvitation", "Friendship", new { id = item.senderId }, new { @class = "glyphicon glyphicon glyphicon-remove-circle btn btn-danger" , @title="Anuluj"})
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+} else {
+<br /><p>Brak wysłanych zaproszeń</p><br />
+}

@@ -1,0 +1,26 @@
+﻿@model ZarlokMvc.ViewModels.CategoryViewModel
+
+@{
+    ViewBag.Title = "Dodaj nową kategorię";
+}
+
+<h2>Dodaj nową kategorię</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+        <form role="form">
+            <div class="form-group">
+                @Html.LabelFor(model => model.name, new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.name)
+                @Html.ValidationMessageFor(model => model.name)
+            </div>
+            <input type="submit" value="Dodaj" class="btn btn-default" />
+        </form>
+}
+
+<div>
+    @Html.ActionLink("Powrót", "Index")
+</div>

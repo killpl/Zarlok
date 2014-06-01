@@ -1,0 +1,253 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ZarlokModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Achievement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="icon" Type="varchar" MaxLength="200" />
+  </EntityType>
+  <EntityType Name="Category">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Eaten">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="foodId" Type="int" />
+    <Property Name="profileId" Type="int" />
+    <Property Name="date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Food">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="100" />
+    <Property Name="calories" Type="int" />
+    <Property Name="categoryId" Type="int" />
+  </EntityType>
+  <EntityType Name="Friendship">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sender" Type="int" />
+    <Property Name="receiver" Type="int" />
+  </EntityType>
+  <EntityType Name="Identifier">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="keyIdentifer" Type="varchar" MaxLength="100" />
+    <Property Name="profileId" Type="int" />
+    <Property Name="date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Profile">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="login" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="firstname" Type="varchar" MaxLength="100" />
+    <Property Name="surname" Type="varchar" MaxLength="100" />
+    <Property Name="type" Type="varchar" MaxLength="6" Nullable="false" />
+  </EntityType>
+  <EntityType Name="ProfileAchievement">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="profileId" Type="int" />
+    <Property Name="achievementId" Type="int" />
+    <Property Name="date" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Request">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="sender" Type="int" />
+    <Property Name="receiver" Type="int" />
+    <Property Name="sent" Type="datetime" />
+  </EntityType>
+  <Association Name="FK__Eaten__foodId__09A971A2">
+    <End Role="Food" Type="Self.Food" Multiplicity="0..1" />
+    <End Role="Eaten" Type="Self.Eaten" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Food">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Eaten">
+        <PropertyRef Name="foodId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Eaten__profileId__0A9D95DB">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Eaten" Type="Self.Eaten" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Eaten">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Food__categoryId__06CD04F7">
+    <End Role="Category" Type="Self.Category" Multiplicity="0..1" />
+    <End Role="Food" Type="Self.Food" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Category">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Food">
+        <PropertyRef Name="categoryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Friendshi__recei__6EC0713C">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Friendship" Type="Self.Friendship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Friendship">
+        <PropertyRef Name="receiver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Friendshi__sende__6DCC4D03">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Friendship" Type="Self.Friendship" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Friendship">
+        <PropertyRef Name="sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Identifie__profi__1BC821DD">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Identifier" Type="Self.Identifier" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Identifier">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProfileAc__achie__2180FB33">
+    <End Role="Achievement" Type="Self.Achievement" Multiplicity="0..1" />
+    <End Role="ProfileAchievement" Type="Self.ProfileAchievement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Achievement">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfileAchievement">
+        <PropertyRef Name="achievementId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__ProfileAc__profi__208CD6FA">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="ProfileAchievement" Type="Self.ProfileAchievement" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="ProfileAchievement">
+        <PropertyRef Name="profileId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__receive__72910220">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="receiver" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Request__sender__719CDDE7">
+    <End Role="Profile" Type="Self.Profile" Multiplicity="0..1" />
+    <End Role="Request" Type="Self.Request" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Profile">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="Request">
+        <PropertyRef Name="sender" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ZarlokModelStoreContainer">
+    <EntitySet Name="Achievement" EntityType="Self.Achievement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Category" EntityType="Self.Category" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Eaten" EntityType="Self.Eaten" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Food" EntityType="Self.Food" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Friendship" EntityType="Self.Friendship" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Identifier" EntityType="Self.Identifier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Profile" EntityType="Self.Profile" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ProfileAchievement" EntityType="Self.ProfileAchievement" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Eaten__foodId__09A971A2" Association="Self.FK__Eaten__foodId__09A971A2">
+      <End Role="Food" EntitySet="Food" />
+      <End Role="Eaten" EntitySet="Eaten" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Eaten__profileId__0A9D95DB" Association="Self.FK__Eaten__profileId__0A9D95DB">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Eaten" EntitySet="Eaten" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Food__categoryId__06CD04F7" Association="Self.FK__Food__categoryId__06CD04F7">
+      <End Role="Category" EntitySet="Category" />
+      <End Role="Food" EntitySet="Food" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Friendshi__recei__6EC0713C" Association="Self.FK__Friendshi__recei__6EC0713C">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Friendship" EntitySet="Friendship" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Friendshi__sende__6DCC4D03" Association="Self.FK__Friendshi__sende__6DCC4D03">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Friendship" EntitySet="Friendship" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Identifie__profi__1BC821DD" Association="Self.FK__Identifie__profi__1BC821DD">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Identifier" EntitySet="Identifier" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProfileAc__achie__2180FB33" Association="Self.FK__ProfileAc__achie__2180FB33">
+      <End Role="Achievement" EntitySet="Achievement" />
+      <End Role="ProfileAchievement" EntitySet="ProfileAchievement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__ProfileAc__profi__208CD6FA" Association="Self.FK__ProfileAc__profi__208CD6FA">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="ProfileAchievement" EntitySet="ProfileAchievement" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__receive__72910220" Association="Self.FK__Request__receive__72910220">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Request__sender__719CDDE7" Association="Self.FK__Request__sender__719CDDE7">
+      <End Role="Profile" EntitySet="Profile" />
+      <End Role="Request" EntitySet="Request" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

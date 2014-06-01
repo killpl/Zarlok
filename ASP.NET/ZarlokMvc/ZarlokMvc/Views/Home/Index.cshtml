@@ -1,0 +1,49 @@
+﻿@{
+    ViewBag.Title = "Żarłok";
+}
+@section featured {
+    <section class="featured">
+        <div class="content-wrapper">
+            <hgroup class="title">
+                <h2>Witaj żarłoku!</h2>
+            </hgroup>
+            <br />
+            <table><tr><td style="width: 70%" valign="top">
+            <h7>Żarłok jest serwisem internetowym, który ułatwi Ci odchudzanie oraz pomoże skontrolować ilość spożywanych kalorii.
+            Zapraszaj znajomych, porównuj wyniki, zdobywaj nowe osiągnięcia i... chudnij! :)</h7><br />
+            <br />
+            @if (!User.Identity.IsAuthenticated)
+            {
+                    <p>
+                        <h6>@Html.ActionLink("Zaloguj", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" }) lub
+                        @Html.ActionLink("zarejestruj się", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })</h6>
+                    </p>
+            }
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <h5>W odchudzaniu bardzo ważną rolę pełni motywacja. Zdobywaj osiągnięcia, aby być najlepszym w rankingu!</h5>
+<br />
+                    <table>
+                    <h3>Ranking</h3>
+                    @foreach(var user in @ViewBag.Ranking)
+                    {
+                        <tr>
+                            <td><span class="badge"><b>@user.ile</b></span></td>
+                            <td><b>@user.nazwa</b></td>
+                        </tr>
+                    }
+                    </table>
+            }       
+            <br />
+            <h5><span class="glyphicon glyphicon-phone"></span>
+            Pobierz aplikację mobilną, aby móc kontrolować swoje kalorie, gdziekolwiek jesteś!</h5><br />
+            </td>
+            <td>@if (!User.Identity.IsAuthenticated)
+            {<img src="~/Images/glutton.png" style="width:100%;height:100%" class="img-rounded"/>}
+            @if (User.Identity.IsAuthenticated)
+            {<img src="~/Images/hungry.jpg" style="width:100%;height:100%" class="img-rounded"/>}
+            </td></tr></table>  </div>
+    </section>
+}
+<br />

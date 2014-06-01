@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ZarlokMvc.Models.Food>
+
+@{
+    ViewBag.Title = "Lista produktów";
+}
+
+<h2>Lista produktów</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("admin"))
+    {
+        <p>
+            <h4>@Html.ActionLink("Dodaj nowy posiłek", "CreateFood")</h4>
+        </p>
+    }
+}
+<br />
+@if(!String.IsNullOrEmpty(ViewBag.Error))
+{
+    <div class="well">@ViewBag.Error</div>
+}
+else
+{
+    <table class="table table-hover table-condensed">
+        <thead>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.calories)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.categoryId)
+        </th>
+        <th></th>
+    </tr>
+</thead>
+<tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.calories)
+        </td>
+         <td>
+            @Html.DisplayFor(modelItem => item.Category.name)
+        </td>
+        <td>
+             @Html.ActionLink(" ", "EditFood", "Food", new { id = item.id }, new { @class="glyphicon glyphicon glyphicon-edit btn btn-primary", @title="Edytuj produkt" })
+             @Html.ActionLink(" ", "DeleteFood", "Food", new { id = item.id }, new { @class="glyphicon glyphicon glyphicon-remove-circle btn btn-danger", @title="Usuń produkt" })          
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+}
+

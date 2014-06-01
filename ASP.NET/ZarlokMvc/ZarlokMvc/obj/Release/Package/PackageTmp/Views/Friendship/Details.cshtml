@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Osiągnięcia";
+}
+<h2>Osiagnięcia</h2>
+<br />
+<center><div class="panel panel-default">
+  <div class="panel-body">
+    <table>
+        @foreach(var user in @ViewBag.Details)
+        {<tr>
+        
+                <td>@user.date</td>
+                <td>@user.name</td>
+        </tr>
+        }
+    </table>
+    </div>
+</div>
+<br /></center>
+<div>
+    <span class="glyphicon glyphicon-share-alt"></span>
+    @Html.ActionLink("Powrót", "Index")
+</div>

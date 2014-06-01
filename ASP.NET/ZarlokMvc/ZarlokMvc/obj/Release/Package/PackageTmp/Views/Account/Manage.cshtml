@@ -1,0 +1,30 @@
+﻿@model ZarlokMvc.Models.UserModel
+@{
+    ViewBag.Title = "Konto";
+}
+
+<h2>Konto</h2>
+
+@if (!String.IsNullOrEmpty(@ViewBag.ErrorMessage))
+{
+    <div align="center"><span class="error">@ViewBag.ErrorMessage</span></div>
+}
+@if (!String.IsNullOrEmpty(@ViewBag.StatusMessage))
+{
+    <p class="message-success">@ViewBag.StatusMessage</p>
+}
+<div class="float-left" style="width:50%">
+    <p>Jesteś zalogowany na <strong>@User.Identity.Name</strong></p>
+    <br /> 
+   <h3>Zmiana hasła</h3><br />
+    @Html.Partial("_ChangePasswordPartial", Model.PasswordModel)
+</div>
+<br />
+<aside style="width:50%">
+    <h3>Edycja konta</h3><br />
+    @Html.Partial("EditUser", Model.ProfileModel)
+</aside>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

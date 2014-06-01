@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="21641c4c0efc42b4ab13f5cbe030582f" Name="Diagram1" ZoomLevel="94">
+        <EntityTypeShape EntityType="ZarlokModel.Achievement" Width="1.5" PointX="6.875" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZarlokModel.Category" Width="1.5" PointX="1.5" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZarlokModel.Eaten" Width="1.5" PointX="3.5" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZarlokModel.Food" Width="1.5" PointX="0.75" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZarlokModel.Profile" Width="1.5" PointX="0.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="ZarlokModel.ProfileAchievement" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <AssociationConnector Association="ZarlokModel.FK__Food__categoryId__3A81B327" ManuallyRouted="false" />
+        <AssociationConnector Association="ZarlokModel.FK__Eaten__foodId__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="ZarlokModel.FK__Eaten__profileId__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="ZarlokModel.FK__ProfileAc__profi__440B1D61" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ZarlokModel.Identifier" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="ZarlokModel.FK__ProfileAc__achie__2180FB33" />
+        <AssociationConnector Association="ZarlokModel.FK__Identifie__profi__1BC821DD" />
+        <EntityTypeShape EntityType="ZarlokModel.Friendship" Width="1.5" PointX="3" PointY="20.125" />
+        <EntityTypeShape EntityType="ZarlokModel.Request" Width="1.5" PointX="3" PointY="17.125" />
+        <AssociationConnector Association="ZarlokModel.FK__Friendshi__recei__6EC0713C" />
+        <AssociationConnector Association="ZarlokModel.FK__Friendshi__sende__6DCC4D03" />
+        <AssociationConnector Association="ZarlokModel.FK__Request__receive__72910220" />
+        <AssociationConnector Association="ZarlokModel.FK__Request__sender__719CDDE7" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

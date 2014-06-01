@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>@ViewBag.Title - My ASP.NET MVC Application</title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+        <meta name="viewport" content="width=device-width" />
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/jqueryui")
+        @RenderSection("scripts", required: false)
+        <script type="text/javascript" src="~/Scripts/bootstrap.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="~/Content/bootstrap.min.css" />
+        @RenderSection("stylesheets", required: false)
+        @Scripts.Render("~/bundles/modernizr")
+        @Styles.Render("~/Content/css")
+    </head>
+    <body>
+        <header>
+            <div class="content-wrapper">
+                <div class="float-left"><p class="site-title">@Html.ActionLink("Żarłok", "Index", "Home")</p></div>
+                <div class="float-right">
+                    <section id="login">
+                        @Html.Partial("_LoginPartial")
+                    </section>
+                    <nav>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <ul id="menu">    
+                            @if (User.IsInRole("user"))
+                            {     
+                                <li>@Html.ActionLink("▶ Szukaj znajomych", "Index", "Profile")</li>
+                                <li>@Html.ActionLink("▶ Znajomi", "Index", "Friendship")</li>
+                                <li>@Html.ActionLink("▶ Zaproszenia", "Invitations", "Friendship")</li>
+                                <li>@Html.ActionLink("▶ Osiągnięcia", "Index", "ProfileAchievement")</li>
+                                <li>@Html.ActionLink("▶ Kategorie jedzenia", "Index", "Category")</li>
+                                <li>@Html.ActionLink("▶ Historia jedzenia", "Index", "Eaten")</li>
+                            }
+                            @if (User.IsInRole("admin"))
+                            {                            
+                                <li>@Html.ActionLink("▶ Zarządzaj kategoriami", "Index", "Category")</li>
+                                <li>@Html.ActionLink("▶ Zarządzaj posiłkami", "Index", "Food")</li>
+                            }
+                        </ul>
+                    }
+                    </nav>
+                 </div>
+            
+        </header>
+        <div id="body">
+            @RenderSection("featured", required: false)
+            <section class="content-wrapper main-content clear-fix">
+                @RenderBody()
+            </section>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                    <p>&copy; @DateTime.Now.Year - My ASP.NET MVC Application</p>
+                </div>
+            </div>
+        </footer>
+        @RenderSection("scripts2", required: false)
+    </body>
+</html>
