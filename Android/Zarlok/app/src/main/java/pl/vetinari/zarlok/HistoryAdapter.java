@@ -57,6 +57,7 @@ public class HistoryAdapter extends BaseAdapter {
         else // History
         {
             name.setText(item.food.name);
+            name.setTextColor(Color.BLACK);
             category.setText(item.category);
             date.setText(new DateFormat().format("hh:mm dd.MM.yyyy", item.date));
         }
