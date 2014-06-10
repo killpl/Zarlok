@@ -4,7 +4,7 @@
     ViewBag.Title = "Lista znajomych";
 }
 <h2>Lista znajomych</h2>
-<br />
+<h3>@Html.ActionLink("Szukaj znajomych", "Index", "Profile")</h3><br />
 @if(!String.IsNullOrEmpty(ViewBag.Error))
 {
     <div class="well">@ViewBag.Error</div>

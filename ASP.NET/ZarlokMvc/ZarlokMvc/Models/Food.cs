@@ -22,13 +22,13 @@ namespace ZarlokMvc.Models
     
         public int id { get; set; }
 
-        [DisplayName("Nazwa posi³ku")]
+        [DisplayName("Nazwa")]
         public string name { get; set; }
 
         [DisplayName("Kalorie")]
         public Nullable<int> calories { get; set; }
 
-        [DisplayName("Nazwa kategorii")]
+        [DisplayName("Kategoria")]
         public Nullable<int> categoryId { get; set; }
     
         public virtual Category Category { get; set; }

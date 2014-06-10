@@ -20,9 +20,11 @@ namespace ZarlokMvc.Models
         public Nullable<int> profileId { get; set; }
 
         [DisplayName("Data")]
-        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy}")]
+        [DisplayFormat(DataFormatString = "{0:dd MMMM yyyy, HH:mm }")]
         [DataType(DataType.Date)]
         public Nullable<System.DateTime> date { get; set; }
+
+        [DisplayName("Osi¹gniêcie")]
         public Nullable<int> achievementId { get; set; }
     
         public virtual Profile Profile { get; set; }
